@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+    </head>
+    <body>
+        <p><a href="http://www.google.com">Google</a></p>
+        <p><a href="http://www.yahoo.es">Yahoo</a></p>
+        <p><a href="http://es.msn.com/">MSN</a></p>
+
+        <script>
+
+            //guardamos en un array de objetos todas las etiquetas "a";
+            var enlaces = document.getElementsByTagName("a");
+
+            //un for para iterar sobre cada elemento del array y cambiarle el tamaño
+            //el nombre de la funcion debe ir sin ()
+            for (var i = 0; i < enlaces.length; i++) {
+                enlaces[i].onmouseover = cambiarTamano;                
+            }
+            
+            for (var j = 0; j < enlaces.length; j++) {
+                
+                enlaces[j].onmouseout = dejarIgual;
+            }
+
+            //FUNION CAMBIAT TAMAÑO, hace un array de elemtnos "a"
+            //y le aplica el tamaño indicado
+            function cambiarTamano() {
+                var enl = document.getElementsByTagName("a");
+                for (var i = 0; i < enl.length; i++) {
+                    enl[i].style.fontSize = "xx-large";
+                    enl[i].style.color = "red";
+                }      
+                
+
+            }
+            function dejarIgual() {
+	        var enl = document.getElementsByTagName("a");
+	        //enlace[0].style.color="yellow";
+                    for (var x = 0; x < enl.length; x++) {                        
+                        enl[x].style.fontSize = "1em";
+                        enl[x].style.color = "blue";
+                    }
+        }
+
+        </script>
+    </body>
+</html>
