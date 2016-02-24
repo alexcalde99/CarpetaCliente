@@ -1,7 +1,3 @@
-/**
- * Created by ALEX on 19/02/2016.
- */
-
 $(document).ready(function(){
 
     var elementoSelecionado;
@@ -20,21 +16,16 @@ $(document).ready(function(){
 
 
     //al pulsar el boton añadireremos la clase selecionada al elemento selecionado
+    //antes de añadir la clase, tenemos que eliminar la clase que estaba puesta
     $('#boton').click( function() {
-
+        $("*").removeClass("rojo").removeClass("azul").removeClass("verde").removeClass("amarillo");
         $(elementoSelecionado).addClass(colorSelecionado);
     });
 
     //elimino todas las clases que sehan añadido
     $('#boton1').click( function() {
-
         $("*").removeClass("rojo").removeClass("azul").removeClass("verde").removeClass("amarillo");
-
-
     });
-
-
-
 
 });
 
