@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplos</title>
+
+    <script>
+
+        window.onload = function () {
+
+             function nada (){
+                this.removeEventListener("click",alerta,true);
+             }
+
+            function alerta(){
+
+                alert("Soy el elemento " + this.id);
+                //para borrar true true o false false
+                this.removeEventListener("click",alerta,false);
+
+                //añadimos un evento al boton,....true para que lo haga de fuera dentro
+                this.addEventListener("click",alerta,true);
+
+                //le añadimos el evento que borrara el evento de alerta..y true
+                this.addEventListener("click",nada);
+
+            }
+
+
+            var body = document.getElementsByTagName("body");
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            var div3 = document.getElementById("div3");
+            var boton = document.getElementById("boton");
+
+            boton.addEventListener("click",alerta,false);
+            div3.addEventListener("click",alerta,false);
+            div2.addEventListener("click",alerta,false);
+            div1.addEventListener("click",alerta,false);
+
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+<div id="div1">
+
+    <div id="div2">
+
+        <div id="div3">
+
+            <button id="boton">Pulsame</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
