@@ -1,0 +1,38 @@
+1. Feu una llista amb tots els plugins del navegador
+
+2. Comprovar si el navegador te instal.lat el plugin Silverlight, i en cas de que no el tinga, demanar a l'usuari si vol ser dirigit a la web oficial per a descarregar-lo.
+
+Nom: Silverlight Plug-In
+
+https://www.microsoft.com/silverlight/
+
+3. Obté les dimensions de la pantalla, i fes un botó que obriga una nova finestra al centre de la pantalla.
+
+4. Fes un script amb un botó per a obrir una finestra nova. En eixa finestra ha d'haver un botó per a tancar-la.
+
+Pista...es pot escriure en una finestra nova, per exemple...
+
+var ventana = window.open('', 'ventana', 'width=640, height=480');
+ventana.document.write('<head><title>Título nueva ventana</title></head>');
+
+ventana.document.write('<body>');
+
+ventana.document.write('<div id="contenedor">');
+
+5. Estudia el funcionament del següent script
+
+http://www.javascriptya.com.ar/temarios/descripcion.php?cod=33
+
+Fes algunes modificacions per a afegir opcions com:
+
+- Obrir una finestra sense barra de direcció.
+
+- Obrir una finestra de mida fixa i moure-la cap a la dreta o cap a l'esquerre.
+
+- Obrir una finestra de mida fixa no redimensionable.
+
+Etc..
+
+6. Carregar una pàgina i comprovar si el navegador te habilitades les cookies.
+
+7. Pàgina amb un botó que comprove el navegador actual. En cas que siga Mozilla o Explorer, demanar a l'usuari ser redirigir a descarregar el Chrome.

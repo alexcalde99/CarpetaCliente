@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- COMENTARIOS
+        5. Escriu un vector com a variable global amb el nom de 10 elements
+        que siguen prendes de vestir o complements. Després escriu altre
+        vector de 10 elements amb el preu sense IVA de cada producte, de manera
+        que preu[i] serà el preu sense iva de prendes[i]. Fes un programa que
+        demane a l'usuari introduir el nom de la prenda de la que vol saber el
+        preu amb final amb IVA. Implementa una funció amb 3 arguments que seran
+        els dos vectors globals i el nom introduit. Fent ús de les sentencies
+        break o continue recorreràs el vector d'elements per a comprovar que
+        existeix eixa prenda i tornaràs el preu final del producte amb un alert.
+        IVA=21%
+        -->
+        <meta name="author" content="ALEX">
+        <script type="text/javascript" src="Ejercicio_5.js"></script>
+        <link href="FICHERO_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div>
+            <header>
+                <h1>EJERCICIO 5</h1>
+            </header>
+
+            <script type="text/javascript">
+                //llamada a la funcion
+                var prendaSeleccionada = prompt("Introduce el nombre de la prenda para saber su precio final");
+                var prendaFinal = existePrenda(prendaSeleccionada);
+                //alert("Prenda Selecionada -->" + prendaFinal);
+                alert(prendaFinal);
+                if (prendaFinal == null) {
+                    alert("Prenda no encontrada!!!!");
+                } else {                
+                    var precioFinalConIva=precioPrendaConIva(prendaFinal);
+                alert("Su precio final es:" + precioFinalConIva.toFixed(2) + "€");
+                }
+            </script>
+
+            <footer>
+                <p>
+
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

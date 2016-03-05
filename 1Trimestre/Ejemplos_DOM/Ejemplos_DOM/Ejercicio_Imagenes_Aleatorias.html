@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- COMENTARIOS
+                
+        -->		
+        <meta name="author" content="ALEX">			
+        <script type="text/javascript" src="NOMBRE_DEL_FICHERO_JS.js"></script>
+        <link href="FICHERO_CSS.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div>
+            <header>
+                <h1>Ejercicio Cambio imagen aleatoria</h1>
+            </header>
+
+            <img name="imagen" id="imagen" onmouseover="cargarImagen();" src="paisaje1.jpg">
+            
+            
+            
+            
+            <script type="text/javascript">
+
+
+
+
+                
+                var misImagenes = new Array(5)
+                misImagenes [0] = "paisaje1.jpg";
+                misImagenes [1] = "paisaje2.jpg";
+                misImagenes [2] = "paisaje3.jpg";
+                misImagenes [3] = "paisaje4.jpg";
+                misImagenes [4] = "paisaje5.jpg";
+                
+                
+                function cargarImagen(){
+                    var imagen = document.getElementById("imagen");
+                    var i = Math.round(Math.random()*5);
+                    document.imagen.src = misImagenes[i];
+
+                }
+                
+    
+
+            </script>
+
+
+
+        </div>
+    </body>
+</html>
+

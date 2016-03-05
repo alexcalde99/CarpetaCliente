@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+        function comprobarNavegador () {
+
+            if (navigator.userAgent.indexOf('Trident') != -1) {
+                document.write('está usando Internet Explorer');
+                var respuesta = window.confirm("¿Desea instalar Chrome?");
+                if(respuesta  == true){
+                    window.open("https://www.google.es/chrome/browser/desktop/","Descargar Chrome")
+                }
+            } else if (navigator.userAgent.indexOf('Firefox') != -1) {
+                var respuesta1 = window.confirm("¿Desea instalar Chrome?");
+                if(respuesta1  == true){
+                    window.open("https://www.google.es/chrome/browser/desktop/","Descargar Chrome")
+                }
+                document.write('está usando Firefox');
+            } else if (navigator.userAgent.indexOf('Chrome') != -1) {
+                document.write('está usando Google Chrome');
+            } else {
+                document.write('Navegador no identificado');
+
+
+            }
+
+        }
+    </script>
+</head>
+
+
+<body>
+
+<input type="button" value="Comprobar  Navegador" onclick="comprobarNavegador()">
+
+
+
+
+
+</body>
+</html>

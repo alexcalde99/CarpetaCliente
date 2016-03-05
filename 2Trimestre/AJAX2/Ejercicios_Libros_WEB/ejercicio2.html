@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Ejercicio 2 - Clases</title>
+    <script type="text/javascript">
+
+        //funcion datos empresa
+        function datosCliente(nomCli,dirCli,telCli){
+            this.nombreCliente = nomCli;
+            this.direccionCliente=dirCli;
+            this.telefonoCliente=telCli;
+        }
+
+        //elementos factura
+        function elementoFactura(desc,cant,prec){
+
+            this.descripcionElemento=desc;
+            this.cantidadelementos=cant;
+            this.precioElemento=prec;
+        }
+
+
+        //defincion de cla clase factura
+        //contiene un array de cliente cion su informacion
+        //contiene un array de elementos(dentro elementos de la factura)
+        function Factura(cliente,elementos){
+            this.cliente = cliente;
+            this.elementos = elementos;
+            this.informacion = {
+                baseImponible:  0,
+                iva:            16,
+                total:          0,
+                formaPago:      "contado"
+            };
+
+
+        }
+
+        // La información de la empresa que emite la factura se
+        // añade al prototype porque se supone que no cambia
+        //no cambia xq van a tener la misma cabecera
+        //prototype lo van a comprartir todos los objetos/instancias
+        Factura.prototype.datosEmpresa = {
+            nombre:    "EMPRESA S.L",
+            direccion: "CALLE MADRID 34",
+            telefono:  "999999999",
+            nif:       "X657667h"
+        };
+
+
+        Factura.prototype.calculaTotal = function() {
+            //recorrer los elementos de la factura para conseguir el total
+            for(var i=0; i < this.elementos.length; i++) {
+                //coge de la info de lafactura la base imponible que es 0, le va sumando el valor de los
+                // elmentos de la factura
+                this.informacion.baseImponible += this.elementos[i].cantidad * this.elementos[i].precio;
+            }
+            //el total se calculara multiplicando la base imponible por el iva, ejemplo 1,21 para obtener el resultado;
+            this.informacion.total = this.informacion.baseImponible * (this.informacion.iva / 100 + 1);
+        }
+
+
+
+
+
+
+
+
+        </script>
+</head>
+
+<body>
+</body>
+</html>

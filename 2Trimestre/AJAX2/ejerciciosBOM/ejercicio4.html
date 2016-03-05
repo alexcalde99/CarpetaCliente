@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script type="text/javascript">
+        function abrirVentanaNueva(url, title, ancho, alto) {
+            var left = (screen.width/2)-(ancho/2); //se calcula la miat de la pantalla y se le resta la mitad del tamaño que quremos para poder asi situarlo en la mitad
+            var top = (screen.height/2)-(alto/2);
+           var ventana= window.open(url, title, 'toolbar=no,width='+ancho+', height='+alto+', top='+top+', left='+left);
+
+            ventana.document.write('<head><title>Nueva ventana</title></head>');
+
+            ventana.document.write('<body>');
+            ventana.document.write('<h6>Ventana nueva</h6>');
+            ventana.document.write('<input type="button" onclick="window.close()" value="Cerrar esta Ventana">');
+            ventana.document.write('</body>');
+
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+
+
+
+<button onclick="abrirVentanaNueva('','',300,300)">Abrir ventana</button>
+
+</body>
+</html>

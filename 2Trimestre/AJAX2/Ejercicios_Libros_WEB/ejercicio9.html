@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ejercicio 9 - Crear, eliminar y modidicar nodos DOM</title>
+<script type="text/javascript">
+
+
+function genera() {
+
+    var numeroAleatorio1=Math.round(Math.random() * 10);
+
+    var div1 =document.getElementById("primero");
+    //creamos el elemento p al cual le vamos a añadir un elemento texto
+    var p1 = document.createElement("p");
+    //creamos el elemento texto con el valor de numero aleatorio
+    var numeroP1 = document.createTextNode(numeroAleatorio1);
+    //agregamos el numero al parrafo
+    p1.appendChild(numeroP1);
+    //agrgamos el parrafo al div
+    div1.appendChild(p1);
+
+    var numeroAleatorio2=Math.round(Math.random() * 10);
+
+    var div2 =document.getElementById("segundo");
+    //creamos el elemento p al cual le vamos a añadir un elemento texto
+    var p2 = document.createElement("p");
+    //creamos el elemento texto con el valor de numero aleatorio
+    var numeroP2 = document.createTextNode(numeroAleatorio2);
+    //agregamos el numero al parrafo
+    p2.appendChild(numeroP2);
+    //agrgamos el parrafo al div
+    div2.appendChild(p2);
+
+
+    eliminarGenerar();
+
+
+}
+
+function eliminarGenerar() {
+    document.getElementById("genera").removeAttribute("onclick");
+}
+
+
+function compara() {
+
+    var numero1 = document.getElementById("primero").childNodes[0].textContent;
+    var numero2 = document.getElementById("segundo").childNodes[0].textContent;
+
+    var resultado = document.getElementById("resultado");
+    var x = document.createTextNode(" ");
+    resultado.appendChild(x);
+
+    if(numero1 > numero2){
+        var textnode = document.createTextNode(" ");
+        var item = document.getElementById("primero").childNodes[0];
+        item.replaceChild(textnode, item.childNodes[0]);
+        var textnode1 = document.createTextNode(numero1);
+        resultado.replaceChild(textnode1,resultado.childNodes[0]);
+    }else{
+        var textnode = document.createTextNode(" ");
+        var item = document.getElementById("segundo").childNodes[0];
+        item.replaceChild(textnode, item.childNodes[0]);
+        var textnode2 = document.createTextNode(numero2);
+        resultado.replaceChild(textnode2,resultado.childNodes[0]);
+    }
+
+
+}
+</script>
+
+<style type="text/css">
+#primero, #segundo, #resultado {width: 150px; height: 150px; border: thin solid silver; background: #F5F5F5; float: left; margin:20px; font-size: 6em; color: #333; text-align: center; padding: 5px; font-family:Arial, Helvetica, sans-serif;}
+#primero p, #segundo p, #resultado p {margin:.2em 0;}
+#resultado {margin-left:1.3em; border-color: black;}
+.clear {clear:both;}
+#compara {margin-left:11em;}
+#genera {font-size:1.2em; }
+</style>
+</head>
+
+<body>
+
+<input id="genera" type="button" value="¡¡ Genera !!" onclick="genera()" />
+
+<div id="primero"></div>
+
+<div id="segundo"></div>
+
+<div class="clear"></div>
+
+<input id="compara" type="button" value="<< Comparar >>" onclick="compara()" />
+
+<div id="resultado"></div>
+
+</body>
+</html>

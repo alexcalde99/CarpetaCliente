@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+
+        window.onload = function() {
+
+
+            var arrayPlugins = navigator.plugins;
+
+            var objeto_body = document.body;
+            var parrafo = document.createElement("p");
+            var lista = document.createElement("ul");
+            for (var i = 0; i < arrayPlugins.length; i++) {
+
+                var elementoLista = document.createElement("li");
+                lista.appendChild(elementoLista); //añadimos al elemento ul un nuevo elemento li
+                var texto = document.createTextNode(arrayPlugins[i].name); //creamos un elemento texto con el nombre del pluggin
+                elementoLista.appendChild(texto); //al elemento li le añadimos un elemento texto
+                parrafo.appendChild(lista); //al elemento parrafo le añadimos el elemento ul->lista
+                objeto_body.appendChild(parrafo); // al elemento body le añadimos el elemento parrafo
+
+
+            }
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+<h1>Lista de pluggins del navegador</h1>
+</body>
+</html>

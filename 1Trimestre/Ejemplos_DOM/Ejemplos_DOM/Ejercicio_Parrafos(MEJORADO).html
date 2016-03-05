@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- COMENTARIOS
+                
+        -->		
+        <meta name="author" content="ALEX">			
+        <script type="text/javascript" src="NOMBRE_DEL_FICHERO_JS.js"></script>
+        <link href="FICHERO_CSS.css" rel="stylesheet" type="text/css" />
+        <style>
+            .rojo{color: red}
+            .negro{color: black}
+            .blue{color: blue}
+        </style>
+
+
+        <script type="text/javascript">
+            function cambiarColorRojo() {
+                var x = document.getElementById("1");
+                x.style.color = "red";
+            }
+            function cambiarColorNegro() {
+                var x = document.getElementById("1");
+                x.style.color = "black";
+            }
+
+            //llamada a la funcion				
+        </script>
+    </head>
+
+    <body>
+       
+        
+        <p id="1" class="negro" onmouseover="cambiarColorRojo();" onmouseout="cambiarColorNegro();">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                    sed lacus feugiat, tempus purus eu, gravida magna. Nam turpis 
+                    sapien, vehicula eget dignissim convallis, convallis rhoncus					
+                    Nulla eu pellentesque ex, nec elementum felis. Lorem ipsum dolor 
+                    sit amet, consectetur adipiscing elit. Cras iaculis est at ex s
+                    ollicitudin porttitor sit amet sed mauris. 
+        </p>
+    </body>
+</html>

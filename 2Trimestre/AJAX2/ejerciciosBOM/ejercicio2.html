@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+        window.onload = function () {
+
+            var arrayPlugins = navigator.plugins;
+            var instalado = false;
+
+            /*
+             Primero compruebo que el plugin instalado, se guarda en boolean true o false
+             */
+
+            for (var i = 0; i < arrayPlugins.length; i++) {
+                if (arrayPlugins[i].name == "Silverlight Plug-In") {
+                    instalado = true;
+                    break;
+                } else {
+
+                }
+            }
+
+            /*
+             Despues de saber el valor del plugin(TRUE/FALSE), pedimos al suario que nos confirme para descargar el plugin
+             */
+
+            if (instalado == false) {
+                var respuesta = window.confirm("No tiene instalado el plugin Silverlight. ¿Desea intalarlo?");
+                if (respuesta == true) {
+                    window.open("https://www.microsoft.com/silverlight/");
+                }
+
+            }
+
+
+        }
+
+    </script>
+</head>
+<body>
+
+<h1></h1>
+
+</body>
+</html>

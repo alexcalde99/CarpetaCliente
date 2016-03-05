@@ -1,0 +1,55 @@
+<html>
+<head></head>
+<body>
+
+<script type="text/javascript">
+
+    function abrirSinBarra() {
+
+        var nueva_ventana = window.open('','Ventana','width=600px,height=450px,top=50px,left=50px,location=NO');
+        nueva_ventana.document.write("Ventana sin barra de direcciones<br>");
+
+    }
+
+    function nuevaVentanaMover() {
+
+        var nueva_ventana = window.open('','Ventana','width=600px,height=450px,top=50px,left=50px,location=NO');
+        nueva_ventana.document.write("Mueve a ventana hacia la izquierda o hacia la derecha<br>");
+        nueva_ventana.document.write("<input type='button' onclick='moveBy(-10,0)' value='MOVER IZQUIERDA'>");
+        nueva_ventana.document.write("<input type='button' onclick='moveBy(10,0)' value='MOVER DERECHA'>");
+
+
+    }
+
+    function nuevaVentanaNoRedimension(){
+
+        var nueva_ventana = window.open("", "Ventana", "width=400,height=400,resizable=NO, location=NO");
+    }
+
+    function nuevaVentanaImprimir(){
+
+        var nueva_ventana = window.open("", "Ventana", "width=400,height=400,resizable=NO, location=NO");
+        nueva_ventana.print();
+    }
+
+
+
+
+</script>
+
+<h1>Ejercicio 5</h1>
+
+<form>
+    <br><br>
+    <input type="button" value="Abrir sin barra Direcciones" onClick="abrirSinBarra()">
+    <br><br>
+    <input type="button" value="Mover Ventana Derecha/Izquierda" onClick="nuevaVentanaMover()">
+    <br><br>
+    <input type="button" value="Ventana NO Redimensionable" onClick="nuevaVentanaNoRedimension()">
+    <br><br>
+    <input type="button" value="IMPRIMIR" onClick="nuevaVentanaImprimir()">
+    <br><br>
+
+</form>
+</body>
+</html>

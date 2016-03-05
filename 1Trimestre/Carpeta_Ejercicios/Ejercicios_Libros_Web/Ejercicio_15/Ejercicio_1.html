@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .informacion{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+
+            function muestraInformacion(elEvento) {
+                var evento = elEvento || window.event;
+                var coordenadaX = evento.clientX;
+                var coordenadaY = evento.clientY;
+                alert("Has pulsado el ratón en la posición: " + coordenadaX + ", " + coordenadaY);
+            }
+
+
+            document.onclick = muestraInformacion;
+
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+
+
+
+</body>
+</html>

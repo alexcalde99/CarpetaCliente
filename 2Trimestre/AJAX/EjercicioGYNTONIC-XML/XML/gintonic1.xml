@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gin-tonic>
+
+    <nombre>Gintonic Santamanía London Dry Gin</nombre>
+    <descripcion>
+        Santamanía es una de las últimas ginebras españolas en aparecer en el mercado.
+        Elaborada a partir de alcohol de uva, destaca su entrada ligeramente dulce en boca y su
+        suavidad y frescura con notas cítricas y florales. Se recomienda su servicio con el simple
+        acompañamiento de cortezas de cítricos y un toque de Angostura.
+    </descripcion>
+    <ingredientes>
+        <ingrediente> Hielo</ingrediente>
+        <ingrediente>Angostura</ingrediente>
+        <ingrediente>piel de limón</ingrediente>
+        <ingrediente>piel de lima</ingrediente>
+        <ingrediente>5cl Santamanía London Dry Gin</ingrediente>
+        <ingrediente>tónica premium</ingrediente>
+    </ingredientes>
+    <img>images/santamaria.jpg</img>
+</gin-tonic>

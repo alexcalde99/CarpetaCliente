@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gin-tonic>
+
+    <nombre>Gintonic de ginebra Nordés, manzana, lima y tónica Markham</nombre>
+    <descripcion>
+        Nordés es una ginebra premium gallega que utiliza como alcohol base el vino albariño y
+        hierbas de la zona. En esta receta combinaremos esta ginebra con manzana verde y corteza de lima.
+    </descripcion>
+    <ingredientes>
+        <ingrediente>Hielo</ingrediente>
+        <ingrediente>50ml ginebra Nordés</ingrediente>
+        <ingrediente>twist de lima</ingrediente>
+        <ingrediente>manzana verde</ingrediente>
+        <ingrediente>tónica Markham</ingrediente>
+        <ingrediente>tónica premium</ingrediente>
+    </ingredientes>
+    <img>images/nordes.jpg</img>
+
+</gin-tonic>
