@@ -1,30 +1,36 @@
     $(document).ready(function(){
 
         //variable donde cargar las peticiones
-        var contenido=$('#contenido');
-        var url_principal="principal.html?nocache="+Math.random();
-        var url_plato="platodeldia.xml?nocache="+Math.random();
-        var url_carta="carta.html?nocache="+Math.random();
+        $('#contenido');
+        var home="principal.html?nocache="+Math.random();
+        var platoDia="platodeldia.xml?nocache="+Math.random();
+        var carta="carta.html?nocache="+Math.random();
 
 
 
-        contenido.load(url_principal);
+
+        $('#contenido').load(home);
 
         $('#home').click(function(){
-            contenido.load(url_principal);
+            $('#contenido').load(home);
         });
 
         $('#plato').click(function(){
-            contenido.html("");
-            $.get(url_plato, platoDelDia, "xml");
+            $('#contenido').html("");//limpiar div
+            peticionAJAX("XML",platoDia,null,cargarPlatoDia);
         });
 
         $('#carta').click(function(){
-            contenido.html("");
-            contenido.load(url_carta, cargaEspecialidades);
+            $('#contenido').html("");//limpiar div
+            $.get(carta, function() {
+                $('#contenido').load(carta,function(){
+                    peticionAJAX("XML","cargaEspecialidadesXML.php",null,cargaEspecialidades)
+                });
+            });
+
         });
 
-        contenido.load(url_principal);
+        $('#contenido').load(home);
 
 
     });
@@ -38,21 +44,21 @@
 
 
     //************************************FUNCION PLATODIA************************************
-    function platoDelDia(docXML){
+    function cargarPlatoDia(datos){
             var txt="";
-            var titulo = $(docXML).find('titulo').text();
+            var titulo = $(datos).find('titulo').text();
             txt +="<h1>"+titulo+"</h1>";
-            var foto=$(docXML).find('foto').text();
+            var foto=$(datos).find('foto').text();
             txt +="<img src="+foto+">";
             txt +="<h2>Ingredientes:</h2>";
             txt += "<ul>";
 
             //recogemos todos los ingredientes
-            $(docXML).find('ingrediente').each(function(){
+            $(datos).find('ingrediente').each(function(){
                 txt +="<li>"+$(this).text()+"</li>"
             });
             txt +="</ul><h2>Preparación:</h2><ul>";
-            $(docXML).find('paso').each(function(){
+            $(datos).find('paso').each(function(){
                 txt +="<li>"+$(this).text()+"</li>";
             });
             txt +="</ul>";
@@ -60,84 +66,104 @@
         }
 
     //************************************FUNCION CARGARESPECIALIDADES************************************
-        function cargaEspecialidades(){
-            var url_especialidades="cargaEspecialidadesXML.php?nocache="+Math.random();
+        function cargaEspecialidades(datos){
 
-            $.get(url_especialidades, function(docXML){
-                var especialidades=$('#especialidades');
-                var cadena_html="<option>- Selecciona -</option>";
-                var nombre="";
-                var codigo="";
-                $(docXML).find('especialidad').each(function(){
-                    nombre=$(this).find('nombre').text();
-                    codigo=$(this).find('codigo').text();
-                    cadena_html+="<option "+"value="+"'"+codigo+"'>"+nombre+"</option>";
+                var txt="<option>--Seleccione Opcion--</option>";
+
+                $(datos).find('especialidad').each(function(){
+                  var nombre=$(this).find('nombre').text();
+                   var codigo=$(this).find('codigo').text();
+                    txt+="<option "+"value="+"'"+codigo+"'>"+nombre+"</option>";
                 });
-                especialidades.html(cadena_html);
-                especialidades.change(cargaPlatos);
-            }, "xml");
+            $('#especialidades').html(txt);
+            $('#especialidades').change(cargaPlatos);
+
         }
 
 
     //************************************FUNCION cargaPlatos************************************
     function cargaPlatos(){
-        var url_platos="cargaplatosXML.php?nocache="+Math.random();
-
-
+        var platos="cargaPicos.php?nocache="+Math.random();
+        //obtenemos el valor del select
         var especialidad = $('#especialidades').val();
+        var parametrosEnviar = {"especialidad" : especialidad};
 
+        peticionAJAX("XML",platos,parametrosEnviar,pintaPlatos)
 
-        if(!isNaN(especialidad)){
-
-            var parametros = {"especialidad" : especialidad};
-
-            $.ajax({
-                data:  parametros,
-                dataType:  "xml",
-                url:   url_platos,
-                type:  'post',
-                success:  pintaPlatos,
-                error:  function (){
-                    alert("error obtenint el recurs"+url_platos);
-                }
-            });
-        }
     }
 
 
     //************************************FUNCION pintaPlatos************************************
-        function pintaPlatos(docXML){
+        function pintaPlatos(datos){
             var platos=$('#platos');
-            var cadena="<option value=0>- Selecciona -</option>";
-            var cena ="";
+            var txt="<option value=0>--Seleccione Opcion--</option>";
+            var listaPlatos ="Tus platos elegidos son:<br>";
 
-            $(docXML).find('plato').each(function(){
+            $(datos).find('plato').each(function(){
                 var nombre=$(this).find('nombre').text();
                 var codigo=$(this).find('codigo').text();
-                cadena +="<option "+"value="+"'"+nombre+"'>"+nombre+"</option>";
+                txt +="<option "+"value="+"'"+nombre+"'>"+nombre+"</option>";
             });
-            platos.html(cadena);
+
+            platos.html(txt);
 
             $('#platos').change(function(){
-                var eleccion = $('#platos').val();
-                if(eleccion!=0){
-                    $('#mensaje').html("El plato "+eleccion+" ha sido añadido a su cena");
-                    cena+=eleccion+"</br>";
+                //obtenemos el valor del select platos
+                var platoElegido = $('#platos').val();
+                //comprobamos q
+                if(platoElegido!=0){
+                    $('#mensaje').html("El plato "+platoElegido+" ha sido añadido");
+                    listaPlatos+=platoElegido+"</br>";
                 }
             });
 
             $('#imprimir').click(function(){
-                var eleccion = $('#platos').val();
-                if(eleccion!=0){
+                var nombreEleccion = $('#platos').val();
+                //comprobamos que no son numeros
+                if(isNaN(nombreEleccion)){
                     var ventana = window.open();
-                    ventana.document.write(cena);
+                    ventana.document.write(listaPlatos);
                 }
             });
         }
 
 
 
+    /*
+     *************FUNCION PETICION AJAX *******************************
+     /*
 
+     *async : Indica si la comunicación será asincrónica (true) o sincrónica (false)
+     *type : Indica el método que se envían los datos (pudiendo ser GET o POST)
+     *dataType : Indica el tipo de datos que se va a recuperar (pudiendo ser "html","xml","json","script")
+     *contentType : Indicamos como se empaquetan los datos para enviarlos al servidor
+     (normalmente "application/x-www-form-urlencoded")
+     *url : Indicamos el nombre de la página que procesará la petición de datos.
+     *data : Indicamos los datos a enviar al servidor.
+     *beforeSend : Indicamos el nombre de la función que se ejecutará previo al envío de datos (en
+     nuestro ejemplo mostramos el gif animado que indica que se inició el pedido de datos al servidor)
+     *success : Indicamos la función que se ejecuta cuando finalizó el envío de datos del servidor y además
+     ocurrió todo en forma correcta (en nuestro ejemplo recuperamos el dato devuelto y lo mostramos en la página)
+     *timeout : El tiempo máximo a esperar por la petición de datos.
+     *error : El nombre de la función que se ejecuta si los datos no llegan del servidor.
+     */
+    function peticionAJAX(tipoDocumento,url,datosEnviar,funcionProcesarRespuesta) {
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            dataType: tipoDocumento,
+            contentType: "application/x-www-form-urlencoded",
+            url: url,
+            data: datosEnviar,
+            beforeSend: null,
+            success: funcionProcesarRespuesta,
+            timeout: 4000,
+            error: function(){
+                alert("error en la peticion")
+            }
+        });
+    }
 
 
 
